@@ -1,5 +1,6 @@
 using cache.Integration;
 using cache.Services;
+using cache.Services.Interface;
 using cache.Services.PessoaService;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -20,6 +21,7 @@ namespace cache.Sccoped
         {
             services.AddTransient<IPessoaService, PessoaService>();
             services.AddTransient<IConsultaExterna, ConsultaExterna>();
+            services.AddTransient<IMemoryCacheService, MemoryCacheService>();
         }
 
         public static IPessoaService ObterInjecaoServicoCpf()

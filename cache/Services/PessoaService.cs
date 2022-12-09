@@ -1,34 +1,30 @@
-using System;
 using cache.Integration;
 using cache.Model;
-using Microsoft.Extensions.Caching.Memory;
+using cache.Services.Interface;
 
 namespace cache.Services.PessoaService
 {
     public class PessoaService : IPessoaService
     {
         private readonly IConsultaExterna _consultaExterna;
-        public IMemoryCache MemoryCache = new MemoryCache(new MemoryCacheOptions());
-        private const string Key = "cpf";
-        private const int TimeExpiration = 10;
-        private const int HoursExpirationRelativeToNow = 1;
+        private readonly IMemoryCacheService _memoryCache;
 
-        public PessoaService(IConsultaExterna consultaExterna)
+        public PessoaService(IConsultaExterna consultaExterna, IMemoryCacheService memoryCache)
         {
             _consultaExterna = consultaExterna;
+            _memoryCache = memoryCache;
         }
 
         public Pessoa GetByCpf(string cpf)
         {
             ValidarDocumento(cpf);
-
-            Pessoa pessoaCache = MemoryCache.Get<Pessoa>(Key);
+            Pessoa pessoaCache = _memoryCache.ObterPessoaCache();
 
             if(pessoaCache != null) 
                 return pessoaCache;
 
             Pessoa pessoa = _consultaExterna.GetByCpf(cpf);
-            GravarCache(pessoa);
+            _memoryCache.GravarCache(pessoa);
 
             return pessoa;
         }
@@ -37,17 +33,6 @@ namespace cache.Services.PessoaService
         {
             if(string.IsNullOrEmpty(cpf) || !Util.ValidarDocumento(cpf))
                 throw new System.Exception("Documento inválido");
-        }
-
-        private void GravarCache(Pessoa pessoa)
-        {        
-            Pessoa pessoaCache = MemoryCache.GetOrCreate(Key, entry =>
-            {
-                entry.SlidingExpiration = TimeSpan.FromSeconds(TimeExpiration);
-                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(HoursExpirationRelativeToNow);
-
-                return pessoa;
-            });
         }
     }
 }

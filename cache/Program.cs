@@ -1,7 +1,7 @@
 ﻿using System;
 using cache.Model;
 using cache.Sccoped;
-using cache.Services;
+using cache.Services.Interface;
 using Newtonsoft.Json;
 
 namespace cache

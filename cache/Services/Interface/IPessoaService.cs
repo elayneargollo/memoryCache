@@ -1,6 +1,6 @@
 using cache.Model;
 
-namespace cache.Services
+namespace cache.Services.Interface
 {
     public interface IPessoaService
     {
