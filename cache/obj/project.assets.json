@@ -5208,11 +5208,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\elayne.argollo\\Documents\\POCZINHA\\cache\\cache.csproj",
+      "projectUniqueName": "C:\\Users\\elayne.argollo\\Documents\\memoryCache\\cache\\cache.csproj",
       "projectName": "cache",
-      "projectPath": "C:\\Users\\elayne.argollo\\Documents\\POCZINHA\\cache\\cache.csproj",
+      "projectPath": "C:\\Users\\elayne.argollo\\Documents\\memoryCache\\cache\\cache.csproj",
       "packagesPath": "C:\\Users\\elayne.argollo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\elayne.argollo\\Documents\\POCZINHA\\cache\\obj\\",
+      "outputPath": "C:\\Users\\elayne.argollo\\Documents\\memoryCache\\cache\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\elayne.argollo\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Specialized;
 using System.Configuration;
 
-namespace cache.Servico.ConfiguracaoAppSettings
+namespace cache.Configuracao.ConfiguracaoAppSettings
 {
     public static class ConfiguracaoAppSettings
     {

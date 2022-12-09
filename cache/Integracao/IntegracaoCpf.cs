@@ -2,7 +2,7 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using cache.Model;
-using cache.Servico.ConfiguracaoAppSettings;
+using cache.Configuracao.ConfiguracaoAppSettings;
 
 namespace cache.Integracao
 {
