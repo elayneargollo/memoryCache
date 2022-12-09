@@ -2,43 +2,38 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using cache.Model;
+using cache.Servico.ConfiguracaoAppSettings;
 
 namespace cache.Integracao
 {
-    public class IntegracaoCpfCnpj
+    public class IntegracaoCpf
     {
-        protected string URL = "https://api.cpfcnpj.com.br/";
-        protected string Token = "5ae973d7a997af13f0aaf2bf60e65803";
-        protected int Pacote = 9;
-        protected string Separador = "/";
+        protected string Path = ConfiguracaoAppSettings.ObterValorChave("URL_Integracao");
+        protected string Token = ConfiguracaoAppSettings.ObterValorChave("Token");
+        protected string Pacote = ConfiguracaoAppSettings.ObterValorChave("Pacote");
         protected HttpClient Client = new HttpClient();
-        private string urlCompleta;
+        protected string Separador = "/";
+        private string Url => String.Concat(Path, Token, Separador, Pacote);  
+        private string urlCompleta(string documento) => String.Concat(Url, Separador, documento);
 
-        private void MontarClient(string cpfcnpj)
+        private void MontarClient(string documento)
         {
             if(Client.BaseAddress != null)
                 return;
 
-            urlCompleta = String.Concat(ObterUrl(), Separador, cpfcnpj);
-
-            Client.BaseAddress = new Uri(urlCompleta);
+            Client.BaseAddress = new Uri(urlCompleta(documento));
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        private string ObterUrl()
-        {
-            return String.Concat(URL, Token, Separador, Pacote);
-        }
-
-        public Pessoa GetByCpf(string cpfcnpj)
+        public Pessoa GetByCpf(string documento)
         {
             try
             {
-                MontarClient(cpfcnpj);
+                MontarClient(documento);
 
-                HttpResponseMessage response = Client.GetAsync(urlCompleta).Result;
+                HttpResponseMessage response = Client.GetAsync(urlCompleta(documento)).Result;
 
                 if (response.IsSuccessStatusCode)
                 {

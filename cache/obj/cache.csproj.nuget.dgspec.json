@@ -50,6 +50,10 @@
               "target": "Package",
               "version": "[13.0.2, )"
             },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "System.Net.Http.Formatting.Extension": {
               "target": "Package",
               "version": "[5.2.3, )"

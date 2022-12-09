@@ -24,3 +24,12 @@ C:\Users\elayne.argollo\Documents\POCZINHA\cache\bin\Debug\netcoreapp3.1\Microso
 C:\Users\elayne.argollo\Documents\POCZINHA\cache\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
 C:\Users\elayne.argollo\Documents\POCZINHA\cache\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\elayne.argollo\Documents\POCZINHA\cache\bin\Debug\netcoreapp3.1\Caelum.Stella.CSharp.dll
+C:\Users\elayne.argollo\Documents\POCZINHA\cache\bin\Debug\netcoreapp3.1\cache.dll.config
+C:\Users\elayne.argollo\Documents\POCZINHA\cache\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\elayne.argollo\Documents\POCZINHA\cache\bin\Debug\netcoreapp3.1\System.Security.AccessControl.dll
+C:\Users\elayne.argollo\Documents\POCZINHA\cache\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\elayne.argollo\Documents\POCZINHA\cache\bin\Debug\netcoreapp3.1\System.Security.Permissions.dll
+C:\Users\elayne.argollo\Documents\POCZINHA\cache\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+C:\Users\elayne.argollo\Documents\POCZINHA\cache\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.AccessControl.dll
+C:\Users\elayne.argollo\Documents\POCZINHA\cache\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+C:\Users\elayne.argollo\Documents\POCZINHA\cache\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
