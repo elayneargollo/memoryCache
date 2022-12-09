@@ -2,22 +2,22 @@ using System;
 using System.Collections.Specialized;
 using System.Configuration;
 
-namespace cache.Configuracao.ConfiguracaoAppSettings
+namespace cache.Configurations.ConfiguracaoAppSettings
 {
     public static class ConfiguracaoAppSettings
     {
-        private static NameValueCollection applicationSettings = ConfigurationManager
+        private static NameValueCollection configuracaoAplicacao = ConfigurationManager
                                     .GetSection("ApplicationSettings")  as NameValueCollection;
 
         public static string ObterValorChave(string chave)
         {
-            foreach (var key in applicationSettings.AllKeys)
+            foreach (var key in configuracaoAplicacao.AllKeys)
             {
                 if(key.Equals(chave))
-                    return applicationSettings[key];
+                    return configuracaoAplicacao[key];
             }
 
-            throw new Exception("A seção ApplicationSettings não esta definida");
+            throw new Exception("A seção ConfiguracaoAplicacao não esta definida");
         }
     }
 }

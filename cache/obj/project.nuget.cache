@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Cd5tdG4xNACaZ6tpiHQWLTIlxEbtBQOdkudgwNP9Hd5pamBIs1Wrjb1ioNCZeYLWUDA4uCDhg/rYfSMPtGo3Gw==",
+  "dgSpecHash": "KQdlr7KKwn+qRaEBkEELrhE6K++lnhZ/5Cy1Oexi55inlQAfaJtQNBG/hF4kGGAAF1vaPx1LQzyOICKALtM/FA==",
   "success": true,
   "projectFilePath": "C:\\Users\\elayne.argollo\\Documents\\memoryCache\\cache\\cache.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\elayne.argollo\\.nuget\\packages\\caelum.stella.csharp\\1.4.7\\caelum.stella.csharp.1.4.7.nupkg.sha512",
     "C:\\Users\\elayne.argollo\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\elayne.argollo\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
+    "C:\\Users\\elayne.argollo\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\elayne.argollo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\elayne.argollo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\elayne.argollo\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",

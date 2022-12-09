@@ -1,6 +1,7 @@
 ﻿using System;
 using cache.Model;
-using cache.Servico.ServiceCpf;
+using cache.Sccoped;
+using cache.Services;
 using Newtonsoft.Json;
 
 namespace cache
@@ -9,7 +10,7 @@ namespace cache
     {
         static void Main(string[] args)
         {
-            ServiceCpf servico = new ServiceCpf();
+            IPessoaService _servicoCpf = ServiceProvide.ObterInjecaoServicoCpf();
             int quantidadeMaxConsulta = 5;
 
             for (int contador = 0; contador <= quantidadeMaxConsulta; contador++)
@@ -17,7 +18,7 @@ namespace cache
                 Console.WriteLine("Informe o cpf: ");
                 string cpf = Console.ReadLine();
 
-                Pessoa pessoa = servico.GetByCpf(cpf);
+                Pessoa pessoa = _servicoCpf.GetByCpf(cpf);
                 Console.WriteLine(JsonConvert.SerializeObject(pessoa));
             }
         }

@@ -1,12 +1,12 @@
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using cache.Configurations.ConfiguracaoAppSettings;
 using cache.Model;
-using cache.Configuracao.ConfiguracaoAppSettings;
 
-namespace cache.Integracao
+namespace cache.Integration
 {
-    public class IntegracaoCpf
+    public class ConsultaExterna : IConsultaExterna
     {
         protected string Path = ConfiguracaoAppSettings.ObterValorChave("URL_Integracao");
         protected string Token = ConfiguracaoAppSettings.ObterValorChave("Token");
