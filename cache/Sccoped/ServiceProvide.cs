@@ -24,7 +24,7 @@ namespace cache.Sccoped
             services.AddTransient<IMemoryCacheService, MemoryCacheService>();
         }
 
-        public static IPessoaService ObterInjecaoServicoCpf()
+        public static IPessoaService ObterInjecaoServicoConsulta()
         {
             SetServiceProvider();
             return serviceProvider.GetService<IPessoaService>();

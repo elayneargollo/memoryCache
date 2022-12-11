@@ -15,15 +15,15 @@ namespace cache
             for (int contador = 0; contador <= quantidadeMaxConsulta; contador++)
             {
                 Console.WriteLine("Informe o cpf/cnpj: ");
-                //string documento = Console.ReadLine();
+                string documento = Console.ReadLine();
 
-                ConsultarDocumento("00000000000");
+                ConsultarDocumento(documento);
             }
         }
 
         static void ConsultarDocumento(string documento)
         {
-            IPessoaService _pessoaService = ServiceProvide.ObterInjecaoServicoCpf();
+            IPessoaService _pessoaService = ServiceProvide.ObterInjecaoServicoConsulta();
             string dados = _pessoaService.GetByDocumento(documento);
 
             Console.WriteLine(dados);

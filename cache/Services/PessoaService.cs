@@ -20,11 +20,11 @@ namespace cache.Services.PessoaService
 
         public string GetByDocumento(string documento)
         {
-            // ValidarDocumento(documento);
-            var dadosCache = _memoryCache.ObterDadosCache();
+            ValidarDocumento(documento);
+            string dadosCache = _memoryCache.ObterDadosCache<string>();
 
-            // if(dadosCache != null) 
-            //     return JsonConvert.SerializeObject(dadosCache);
+            if(dadosCache != null) 
+                return JsonConvert.SerializeObject(dadosCache);
             
             dynamic dados = _consultaExterna.GetByDocumento<dynamic>(documento);
             string dadosSerializados = JsonConvert.SerializeObject(dados);

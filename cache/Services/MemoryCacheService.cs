@@ -11,35 +11,21 @@ namespace cache.Services
         private const string Key = "dados";
         private const int TimeExpiration = 10;
         private const int HoursExpirationRelativeToNow = 1;
-        public object Dados;
 
-        public object GravarCache(string dadosSerializados)
+        public void GravarCache<T>(T dadosSerializados)
         {        
-            if (!MemoryCache.TryGetValue(Key, out Dados))
+            T dados = MemoryCache.GetOrCreate(Key, entry =>
             {
-                var opcoesDoCache = new MemoryCacheEntryOptions()
-                {
-                    AbsoluteExpiration = DateTime.Now.AddSeconds(TimeExpiration)
-                };
+                entry.SlidingExpiration = TimeSpan.FromSeconds(TimeExpiration);
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(HoursExpirationRelativeToNow);
 
-                Dados = dadosSerializados;
-                MemoryCache.Set(Key, Dados, opcoesDoCache);
-            }
-
-            return Dados;
-
-            // Dados dados = MemoryCache.GetOrCreate(Key, entry =>
-            // {
-            //     entry.SlidingExpiration = TimeSpan.FromSeconds(TimeExpiration);
-            //     entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(HoursExpirationRelativeToNow);
-
-            //     return dadosSerializados;
-            // });
+                return dadosSerializados;
+            });
         }
 
-        public object ObterDadosCache()
+        public T ObterDadosCache<T>()
         {
-            return MemoryCache.Get(Key);
+            return MemoryCache.Get<T>(Key);
         }
     }
 }
