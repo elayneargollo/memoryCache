@@ -1,6 +1,6 @@
 namespace cache.Model
 {
-    public class Pessoa
+    public class PessoaFisica
     {
         public string Cpf { get; set;  }
         public string Nome { get; set;  }

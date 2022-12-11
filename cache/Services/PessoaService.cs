@@ -1,6 +1,7 @@
 using cache.Integration;
 using cache.Model;
 using cache.Services.Interface;
+using System;
 
 namespace cache.Services.PessoaService
 {
@@ -15,23 +16,37 @@ namespace cache.Services.PessoaService
             _memoryCache = memoryCache;
         }
 
-        public Pessoa GetByCpf(string cpf)
+        public PessoaFisica GetByCpf(string cpf)
         {
             ValidarDocumento(cpf);
-            Pessoa pessoaCache = _memoryCache.ObterPessoaCache();
+            PessoaFisica pessoaCache = _memoryCache.ObterPessoaCache<PessoaFisica>();
 
             if(pessoaCache != null) 
                 return pessoaCache;
 
-            Pessoa pessoa = _consultaExterna.GetByCpf(cpf);
+            PessoaFisica pessoa = _consultaExterna.GetByDocumento<PessoaFisica>(cpf);
             _memoryCache.GravarCache(pessoa);
 
             return pessoa;
         }
 
-        private void ValidarDocumento(string cpf)
+        public PessoaJuridica GetByCnpj(string cnpj)
         {
-            if(string.IsNullOrEmpty(cpf) || !Util.ValidarDocumento(cpf))
+            ValidarDocumento(cnpj);
+            PessoaJuridica pessoaCache = _memoryCache.ObterPessoaCache<PessoaJuridica>();
+
+            if(pessoaCache != null) 
+                return pessoaCache;
+
+            PessoaJuridica pessoa = _consultaExterna.GetByDocumento<PessoaJuridica>(cnpj);
+            _memoryCache.GravarCache(pessoa);
+
+            return pessoa;
+        }
+
+        private void ValidarDocumento(string documento)
+        {
+            if(string.IsNullOrEmpty(documento) || !Util.ValidarDocumento(documento))
                 throw new System.Exception("Documento inválido");
         }
     }

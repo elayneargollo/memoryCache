@@ -12,9 +12,9 @@ namespace cache.Services
         private const int TimeExpiration = 10;
         private const int HoursExpirationRelativeToNow = 1;
 
-        public void GravarCache(Pessoa pessoa)
+        public void GravarCache<T>(T pessoa)
         {        
-            Pessoa pessoaCache = MemoryCache.GetOrCreate(Key, entry =>
+            T pessoaCache = MemoryCache.GetOrCreate(Key, entry =>
             {
                 entry.SlidingExpiration = TimeSpan.FromSeconds(TimeExpiration);
                 entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(HoursExpirationRelativeToNow);
@@ -23,9 +23,9 @@ namespace cache.Services
             });
         }
 
-        public Pessoa ObterPessoaCache()
+        public T ObterPessoaCache<T>()
         {
-            return MemoryCache.Get<Pessoa>(Key);
+            return MemoryCache.Get<T>(Key);
         }
     }
 }

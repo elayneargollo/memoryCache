@@ -4,6 +4,6 @@ namespace cache.Integration
 {
     public interface IConsultaExterna
     {
-        public Pessoa GetByCpf(string documento);
+        public T GetByDocumento<T>(string documento);
     }
 }

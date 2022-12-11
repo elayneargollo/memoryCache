@@ -4,6 +4,7 @@ namespace cache.Services.Interface
 {
     public interface IPessoaService
     {
-        public Pessoa GetByCpf(string cpf);
+        public PessoaFisica GetByCpf(string cpf);
+        public PessoaJuridica GetByCnpj(string cnpj);
     }
 }

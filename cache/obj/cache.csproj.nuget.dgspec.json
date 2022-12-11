@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\elayne.argollo\\Documents\\memoryCache\\cache\\cache.csproj": {}
+    "C:\\Users\\elayn\\OneDrive\\Documents\\Github\\memoryCache\\cache\\cache.csproj": {}
   },
   "projects": {
-    "C:\\Users\\elayne.argollo\\Documents\\memoryCache\\cache\\cache.csproj": {
+    "C:\\Users\\elayn\\OneDrive\\Documents\\Github\\memoryCache\\cache\\cache.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\elayne.argollo\\Documents\\memoryCache\\cache\\cache.csproj",
+        "projectUniqueName": "C:\\Users\\elayn\\OneDrive\\Documents\\Github\\memoryCache\\cache\\cache.csproj",
         "projectName": "cache",
-        "projectPath": "C:\\Users\\elayne.argollo\\Documents\\memoryCache\\cache\\cache.csproj",
-        "packagesPath": "C:\\Users\\elayne.argollo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\elayne.argollo\\Documents\\memoryCache\\cache\\obj\\",
+        "projectPath": "C:\\Users\\elayn\\OneDrive\\Documents\\Github\\memoryCache\\cache\\cache.csproj",
+        "packagesPath": "C:\\Users\\elayn\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\elayn\\OneDrive\\Documents\\Github\\memoryCache\\cache\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\elayne.argollo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\elayn\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -78,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.414\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.425\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -10,11 +10,11 @@ namespace cache.Integration
     {
         protected string Path = ConfiguracaoAppSettings.ObterValorChave("URL_Integracao");
         protected string Token = ConfiguracaoAppSettings.ObterValorChave("Token");
-        protected string Pacote = ConfiguracaoAppSettings.ObterValorChave("Pacote");
+        protected string PacoteCpf = ConfiguracaoAppSettings.ObterValorChave("Pacote_Cpf");
+        protected string PacoteCnpj = ConfiguracaoAppSettings.ObterValorChave("Pacote_Cnpj");
         protected HttpClient Client = new HttpClient();
-        protected string Separador = "/";
-        private string Url => String.Concat(Path, Token, Separador, Pacote);  
-        private string urlCompleta(string documento) => String.Concat(Url, Separador, documento);
+        private string Url => String.Concat(Path, Token);  
+        private string urlCompleta(string documento) => documento.Length <= 11 ? String.Concat(Url, PacoteCpf, documento) : String.Concat(Url, PacoteCnpj, documento);
 
         private void MontarClient(string documento)
         {
@@ -27,7 +27,7 @@ namespace cache.Integration
                     new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public Pessoa GetByCpf(string documento)
+        public T GetByDocumento<T>(string documento)
         {
             try
             {
@@ -36,9 +36,7 @@ namespace cache.Integration
                 HttpResponseMessage response = Client.GetAsync(urlCompleta(documento)).Result;
 
                 if (response.IsSuccessStatusCode)
-                {
-                    return response.Content.ReadAsAsync<Pessoa>().Result;
-                }
+                    return response.Content.ReadAsAsync<T>().Result;
 
                 Error erro = response.Content.ReadAsAsync<Error>().Result;
                 throw new Exception($"{erro.Erro}");
