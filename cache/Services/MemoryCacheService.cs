@@ -8,24 +8,38 @@ namespace cache.Services
     public class MemoryCacheService : IMemoryCacheService
     {
         public IMemoryCache MemoryCache = new MemoryCache(new MemoryCacheOptions());
-        private const string Key = "cpf";
+        private const string Key = "dados";
         private const int TimeExpiration = 10;
         private const int HoursExpirationRelativeToNow = 1;
+        public object Dados;
 
-        public void GravarCache<T>(T pessoa)
+        public object GravarCache(string dadosSerializados)
         {        
-            T pessoaCache = MemoryCache.GetOrCreate(Key, entry =>
+            if (!MemoryCache.TryGetValue(Key, out Dados))
             {
-                entry.SlidingExpiration = TimeSpan.FromSeconds(TimeExpiration);
-                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(HoursExpirationRelativeToNow);
+                var opcoesDoCache = new MemoryCacheEntryOptions()
+                {
+                    AbsoluteExpiration = DateTime.Now.AddSeconds(TimeExpiration)
+                };
 
-                return pessoa;
-            });
+                Dados = dadosSerializados;
+                MemoryCache.Set(Key, Dados, opcoesDoCache);
+            }
+
+            return Dados;
+
+            // Dados dados = MemoryCache.GetOrCreate(Key, entry =>
+            // {
+            //     entry.SlidingExpiration = TimeSpan.FromSeconds(TimeExpiration);
+            //     entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(HoursExpirationRelativeToNow);
+
+            //     return dadosSerializados;
+            // });
         }
 
-        public T ObterPessoaCache<T>()
+        public object ObterDadosCache()
         {
-            return MemoryCache.Get<T>(Key);
+            return MemoryCache.Get(Key);
         }
     }
 }

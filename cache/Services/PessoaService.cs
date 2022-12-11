@@ -2,6 +2,8 @@ using cache.Integration;
 using cache.Model;
 using cache.Services.Interface;
 using System;
+using Newtonsoft.Json;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace cache.Services.PessoaService
 {
@@ -16,32 +18,19 @@ namespace cache.Services.PessoaService
             _memoryCache = memoryCache;
         }
 
-        public PessoaFisica GetByCpf(string cpf)
+        public string GetByDocumento(string documento)
         {
-            ValidarDocumento(cpf);
-            PessoaFisica pessoaCache = _memoryCache.ObterPessoaCache<PessoaFisica>();
+            // ValidarDocumento(documento);
+            var dadosCache = _memoryCache.ObterDadosCache();
 
-            if(pessoaCache != null) 
-                return pessoaCache;
+            // if(dadosCache != null) 
+            //     return JsonConvert.SerializeObject(dadosCache);
+            
+            dynamic dados = _consultaExterna.GetByDocumento<dynamic>(documento);
+            string dadosSerializados = JsonConvert.SerializeObject(dados);
 
-            PessoaFisica pessoa = _consultaExterna.GetByDocumento<PessoaFisica>(cpf);
-            _memoryCache.GravarCache(pessoa);
-
-            return pessoa;
-        }
-
-        public PessoaJuridica GetByCnpj(string cnpj)
-        {
-            ValidarDocumento(cnpj);
-            PessoaJuridica pessoaCache = _memoryCache.ObterPessoaCache<PessoaJuridica>();
-
-            if(pessoaCache != null) 
-                return pessoaCache;
-
-            PessoaJuridica pessoa = _consultaExterna.GetByDocumento<PessoaJuridica>(cnpj);
-            _memoryCache.GravarCache(pessoa);
-
-            return pessoa;
+            _memoryCache.GravarCache(dadosSerializados);
+            return dadosSerializados;
         }
 
         private void ValidarDocumento(string documento)

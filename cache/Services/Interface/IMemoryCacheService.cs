@@ -4,7 +4,7 @@ namespace cache.Services.Interface
 {
     public interface IMemoryCacheService
     {
-        public void GravarCache<T>(T pessoa);
-        public T ObterPessoaCache<T>();
+        public object GravarCache(string dadosSerializados);
+        public object ObterDadosCache();
     }
 }
